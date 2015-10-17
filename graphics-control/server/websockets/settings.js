@@ -1,7 +1,7 @@
 'use strict';
 
 var dataInterface = require('../data/data');
-var namespace = "teamSettings"
+var namespace = 'teamSettings';
 
 module.exports = function(socket) {
     dataInterface.listenForUpdates(function (data) {
