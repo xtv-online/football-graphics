@@ -17,7 +17,7 @@ function loadData() {
             });
         } else {
             data = fileData;
-            console.log(data);
+            newDataUpdates();
         }
     });
 }
@@ -30,16 +30,50 @@ function saveData() {
     });
 }
 
+var updateListeners = [];
+
+function updateData() {
+    saveData();
+    newDataUpdates();
+}
+
+function newDataUpdates() {
+    for (var i = 0; i < updateListeners.length; i++) {
+        updateListeners[i](data);
+    }
+}
+
+module.exports.listenForUpdates = function (callback) {
+    updateListeners.push(callback);
+}
+
 loadData();
 
-module.exports.addPlayer = function(team, player) {
+module.exports.requestData = function () {
+    newDataUpdates();
+    return data;
+};
 
+module.exports.addPlayer = function(team, player) {
+    if (team === 'home') {
+        data.home.players.push(player);
+    } else {
+        data.guest.players.push(player);
+    }
 }
 
 module.exports.removePlayer = function(team, playerId) {
-
+    if (team === 'home') {
+        data.home.players.splice(playerId, 1);
+    } else {
+        data.guest.players.splice(playerId, 1);
+    }
 }
 
-module.exports.setPlaying = function(team, playerId) {
-
+module.exports.setPlaying = function(team, playerId, isPlaying) {
+    if (team === 'home') {
+        data.home.players[playerId].isPlaying = isPlaying;
+    } else {
+        data.guest.players[playerId].isPlaying = isPlaying;
+    }
 }
