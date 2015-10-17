@@ -18,7 +18,7 @@ angular.module('app')
         $scope.addHomePlayer = function () {
             if ($scope.newHomePlayer.name !== '') {
                 if ($scope.newHomePlayer.number !== '') {
-                    TeamSettingsSvc.addHomePlayer(newHomePlayer);
+                    TeamSettingsSvc.addHomePlayer($scope.newHomePlayer);
                     $scope.newHomePlayer = {
                         'name': '',
                         'number': '',
@@ -39,7 +39,7 @@ angular.module('app')
         $scope.addGuestPlayer = function () {
             if ($scope.newGuestPlayer.name !== '') {
                 if ($scope.newGuestPlayer.number !== '') {
-                    TeamSettingsSvc.addGuestPlayer(newGuestPlayer);
+                    TeamSettingsSvc.addGuestPlayer($scope.newGuestPlayer);
                     $scope.newGuestPlayer = {
                         'name': '',
                         'number': '',
