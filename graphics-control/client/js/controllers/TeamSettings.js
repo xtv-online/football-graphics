@@ -72,18 +72,13 @@ angular.module('app')
             $scope.newGuestTeamName = '';
         };
 
-        $scope.newHomeColour = '';
-
         $scope.changeHomeColour = function () {
-            TeamSettingsSvc.changeHomeTeamColour(newHomeColour);
+            TeamSettingsSvc.changeHomeTeamColour($scope.data.home.colour);
             $scope.newHomeColour = '';
         };
 
-        $scope.newGuestColour = '';
-
         $scope.changeGuestColour = function () {
-            TeamSettingsSvc.changeGuestTeamColour(newGuestColour);
-            $scope.newGuestColour = '';
+            TeamSettingsSvc.changeGuestTeamColour($scope.data.guest.colour);
         };
 
     });
