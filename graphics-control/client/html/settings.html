@@ -51,6 +51,14 @@
               <button class="btn btn-default" type="button">Set name</button>
             </span>
           </div>
+          <div class="input-group padding-15">
+            <input type="text" ng-model="homeColor" class="form-control" placeholder="#0f5d3b">
+            <span class="input-group-addon" style="background-color:{{homeColor}};">&nbsp</span>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Set colour</button>
+            </span>
+
+          </div>
           <!-- /input-group -->
         </div>
         <div class="panel panel-default player-list">
@@ -108,6 +116,13 @@
             <input type="text" class="form-control" placeholder="Guest">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button">Set name</button>
+            </span>
+          </div>
+          <div class="input-group padding-15">
+            <input type="text" ng-model="guestColor" class="form-control" placeholder="#0f5d3b">
+            <span class="input-group-addon" style="background-color:{{guestColor}};">&nbsp</span>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Set colour</button>
             </span>
           </div>
           <!-- /input-group -->
