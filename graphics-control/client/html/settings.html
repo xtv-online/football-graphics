@@ -37,7 +37,7 @@
 
   <div class="container">
 
-    <div class="control-template">
+    <div class="control-template" ng-controller="TeamSettingsController">
 
       <div class="col-xs-12 col-md-6 border-right">
         <div class="h1 team">Home</div>
@@ -46,16 +46,16 @@
             <h3 class="panel-title">Team Control</h3>
           </div>
           <div class="input-group padding-15">
-            <input type="text" class="form-control" placeholder="Home">
+            <input type="text" class="form-control" placeholder="Home" ng-model="data.home.name">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Set name</button>
+              <button class="btn btn-default" type="button" ng-click="changeHomeTeamName()">Set name</button>
             </span>
           </div>
           <div class="input-group padding-15">
-            <input type="text" ng-model="homeColor" class="form-control" placeholder="#0f5d3b">
-            <span class="input-group-addon" style="background-color:{{homeColor}};">&nbsp</span>
+            <input type="text" ng-model="data.home.colour" class="form-control" placeholder="#0f5d3b">
+            <span class="input-group-addon" style="background-color:{{data.home.colour}};">&nbsp</span>
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Set colour</button>
+              <button class="btn btn-default" type="button" ng-click="changeHomeColour()">Set colour</button>
             </span>
 
           </div>

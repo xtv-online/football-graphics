@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('teamSettingsController', function($scope, TeamSettingsSvc) {
+    .controller('TeamSettingsController', function($scope, TeamSettingsSvc) {
         $scope.data = {};
 
         TeamSettingsSvc.updateData();
@@ -58,18 +58,12 @@ angular.module('app')
             TeamSettingsSvc.removeGuestPlayer(id);
         };
 
-        $scope.newHomeTeamName = '';
-
         $scope.changeHomeTeamName = function () {
-            TeamSettingsSvc.changeHomeTeamName(newHomeTeamName);
-            $scope.newHomeTeamName = '';
+            TeamSettingsSvc.changeHomeTeamName($scope.data.home.name);
         };
 
-        $scope.newGuestTeamName = '';
-
         $scope.changeGuestTeamName = function () {
-            TeamSettingsSvc.changeGuestTeamName(newGuestTeamName);
-            $scope.newGuestTeamName = '';
+            TeamSettingsSvc.changeGuestTeamName($scope.data.guest.name);
         };
 
         $scope.changeHomeColour = function () {

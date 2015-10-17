@@ -83,9 +83,9 @@ module.exports.setPlaying = function(team, playerId, isPlaying) {
 
 module.exports.setColour = function (team, colourString) {
     if (team === 'home') {
-        data.home.colour = name;
+        data.home.colour = colourString;
     } else {
-        data.guest.colour = name;
+        data.guest.colour = colourString;
     }
     updateData();
 }
