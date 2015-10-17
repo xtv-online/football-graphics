@@ -1,5 +1,7 @@
 'use strict';
 
+var test = require('../data/data');
+
 module.exports = function(socket) {
     setInterval(function () {
         socket.broadcast('namespace', 'instruction', 'data');
