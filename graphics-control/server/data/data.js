@@ -60,6 +60,7 @@ module.exports.addPlayer = function(team, player) {
     } else {
         data.guest.players.push(player);
     }
+    updateData();
 }
 
 module.exports.removePlayer = function(team, playerId) {
@@ -68,6 +69,7 @@ module.exports.removePlayer = function(team, playerId) {
     } else {
         data.guest.players.splice(playerId, 1);
     }
+    updateData();
 }
 
 module.exports.setPlaying = function(team, playerId, isPlaying) {
@@ -76,4 +78,15 @@ module.exports.setPlaying = function(team, playerId, isPlaying) {
     } else {
         data.guest.players[playerId].isPlaying = isPlaying;
     }
+    updateData();
+}
+
+module.exports.setNameHome = function (name) {
+    data.home.name = name;
+    updateData();
+}
+
+module.exports.setNameGuest = function (name) {
+    data.guest.name = name;
+    updateData();
 }
