@@ -63,29 +63,40 @@
                 </div>
                 <div class="panel panel-default player-list">
                     <div class="panel-heading">
+                        <h3 class="panel-title">New Player</h3>
+                    </div>
+                    <div class="panel-body players">
+                        <div class="row">
+                            <div class="col-xs-12 padding-15">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="playerName">Name</label>
+                                        <input type="text" class="form-control" id="playerName" placeholder="Max Schmitt" ng-model="newHomePlayer.name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="playerNumber">Number</label>
+                                        <input type="number" class="shortwidth form-control" id="playerNumber" placeholder="1" ng-model="newHomePlayer.number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="playerDescription">Description</label>
+                                        <input type="text" class=" form-control" id="playerDescription" placeholder="Team Captain" ng-model="newHomePlayer.description">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="playerFilepath">Picture URI</label>
+                                        <input type="url" class="form-control" id="playerFilepath" placeholder="http://hello.world" ng-model="newHomePlayer.filename">
+                                    </div>
+                                    <button type="submit" class="btn btn-default" ng-click="addHomePlayer()">Add</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default player-list">
+                    <div class="panel-heading">
                         <h3 class="panel-title">Players</h3>
                     </div>
                     <div class="panel-body players">
-
-                        <div class="player-control">
-
-                            <div class="row">
-                                <div class="col-xs-12 padding-15">
-                                    <form class="form-inline">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="playerName">Name</label>
-                                            <input type="text" class="form-control" id="playerName" placeholder="Max Schmitt" ng-model="newHomePlayer.name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="playerNumber">Number</label>
-                                            <input type="number" class="shortwidth form-control" id="playerNumber" placeholder="1" ng-model="newHomePlayer.number">
-                                        </div>
-                                        <button type="submit" class="btn btn-default" ng-click="addHomePlayer()">Add</button>
-                                    </form>
-                                </div>
-                            </div>
-
-
+                        <div class="row">
                             <row ng-repeat="player in data.home.players | orderBy: 'number'">
                                 <div class="col-xs-1 player-number">
                                     {{ player.number }} </div>
@@ -128,26 +139,41 @@
                 </div>
                 <div class="panel panel-default player-list">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Players</h3>
+                        <h3 class="panel-title">New Player</h3>
                     </div>
                     <div class="panel-body players">
                         <div class="row">
                             <div class="col-xs-12 padding-15">
-                                <form class="form-inline">
+                                <form>
                                     <div class="form-group">
-                                        <label class="sr-only" for="playerName">Name</label>
+                                        <label for="playerName">Name</label>
                                         <input type="text" class="form-control" id="playerName" placeholder="Max Schmitt" ng-model="newGuestPlayer.name">
                                     </div>
                                     <div class="form-group">
-                                        <label class="sr-only" for="playerNumber">Number</label>
-                                        <input type="number" class="shortwidth form-control" id="playerNumber" placeholder="1"  ng-model="newGuestPlayer.number">
+                                        <label for="playerNumber">Number</label>
+                                        <input type="number" class="shortwidth form-control" id="playerNumber" placeholder="1" ng-model="newGuestPlayer.number">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="playerDescription">Description</label>
+                                        <input type="text" class=" form-control" id="playerDescription" placeholder="Team Captain" ng-model="newGuestPlayer.description">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="playerFilepath">Picture URI</label>
+                                        <input type="url" class="form-control" id="playerFilepath" placeholder="http://hello.world" ng-model="newGuestPlayer.filename">
                                     </div>
                                     <button type="submit" class="btn btn-default" ng-click="addGuestPlayer()">Add</button>
                                 </form>
                             </div>
                         </div>
-
-
+                    </div>
+                </div>
+                <div class="panel panel-default player-list">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">New Player</h3>
+                    </div>
+                    <div class="panel-body players">
                         <row ng-repeat="player in data.guest.players | orderBy: 'number'">
                             <div class="col-xs-1 player-number">
                                 {{ player.number }} </div>
