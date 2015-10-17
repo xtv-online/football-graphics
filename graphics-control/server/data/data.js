@@ -81,12 +81,20 @@ module.exports.setPlaying = function(team, playerId, isPlaying) {
     updateData();
 }
 
-module.exports.setNameHome = function (name) {
-    data.home.name = name;
+module.exports.setColour = function (team, colourString) {
+    if (team === 'home') {
+        data.home.colour = name;
+    } else {
+        data.guest.colour = name;
+    }
     updateData();
 }
 
-module.exports.setNameGuest = function (name) {
-    data.guest.name = name;
+module.exports.setName = function (team, name) {
+    if (team === 'home') {
+        data.home.name = name;
+    } else {
+        data.guest.name = name;
+    }
     updateData();
 }
