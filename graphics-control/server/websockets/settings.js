@@ -12,6 +12,10 @@ module.exports = function(socket) {
         dataInterface.requestData();
     });
 
+    socket.listen(namespace, 'setPlaying', function (data) {
+        dataInterface.setPlaying(data.team, data.playerNumber, data.isPlaying);
+    });
+
     socket.listen(namespace, 'addPlayer', function (data) {
         dataInterface.addPlayer(data.team, data.player);
     });

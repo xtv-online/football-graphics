@@ -8,4 +8,9 @@ angular.module('app')
             $scope.$digest();
         });
 
+        $scope.setPlayerIsPlaying = function (team, playerNumber, isPlaying) {
+            TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
+        };
+
+
     });
