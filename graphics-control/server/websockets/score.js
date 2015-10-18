@@ -7,11 +7,13 @@ var data = {
     'home': {
         'name': '',
         'shortName': '',
+        'colour':'',
         'score': 0
     },
     'guest': {
         'name': '',
         'shortName': '',
+        'colour':'',
         'score': 0
     }
 };
@@ -24,8 +26,10 @@ module.exports = function (socket) {
     dataInterface.listenForUpdates(function (newData) {
         data.home.name = newData.home.name;
         data.home.shortName = newData.home.shortName;
+        data.home.colour= newData.home.colour;
         data.guest.name = newData.guest.name;
         data.guest.shortName = newData.guest.shortName;
+        data.guest.colour = newData.guest.colour;
         sendDataUpdate();
     });
 
