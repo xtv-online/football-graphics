@@ -70,7 +70,7 @@
                                         <button type="button" class="btn btn-default">Yellow</button>
                                         <button type="button" class="btn btn-default">Red</button>
                                         <button type="button" class="btn btn-default">Goal</button>
-                                        <button type="button" class="btn btn-default">Substitute</button>
+                                        <button type="button" class="btn btn-default" ng-click="open('Home')">Substitute</button>
                                         <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('home', player.number, false)">Remove</button>
                                     </div>
                                 </div>
@@ -78,6 +78,7 @@
                         </div><!--</row>-->
                     </div>
                 </div>
+
                 <!-- /Player Control -->
             </div>
             <div class="panel panel-default player-list">
@@ -140,7 +141,7 @@
                                         <button type="button" class="btn btn-default">Yellow</button>
                                         <button type="button" class="btn btn-default">Red</button>
                                         <button type="button" class="btn btn-default">Goal</button>
-                                        <button type="button" class="btn btn-default">Substitute</button>
+                                        <button type="button" class="btn btn-default" ng-click="open('Guest')">Substitute</button>
                                         <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('guest', player.number, false)">Remove</button>
                                     </div>
                                 </div>
@@ -190,6 +191,24 @@
 <!-- /.container -->
 <script src="js/vendor.js" charset="utf-8"></script>
 <script src="js/application.js" charset="utf-8"></script>
+<!-- Substitute Modal-->
+<script type="text/ng-template" id="substituteModal">
+    <div class="modal-header">
+        <h3 class="modal-title">Substitute for...</h3>
+    </div>
+    <div class="modal-body">
+        <ul>
+            <li ng-repeat="player in data | filter : {isPlaying:false}">
+                <a href="#" ng-click="$event.preventDefault(); selected.player = player">{{ player.name }}</a>
+            </li>
+        </ul>
+        Selected: <b>{{ selected.player.name }}</b>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
 </body>
 
 </html>
