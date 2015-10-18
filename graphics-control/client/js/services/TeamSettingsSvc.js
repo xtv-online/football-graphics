@@ -14,6 +14,15 @@ angular.module('app')
             });
         };
 
+        this.setPlayerIsPlaying= function (team, playerNumber, isPlaying) {
+            var data = {
+                'team': team,
+                'playerNumber': playerNumber,
+                'isPlaying': isPlaying
+            };
+            WebSocketSvc.sendMessage(namespace, 'setPlaying', data);
+        };
+
         this.addHomePlayer = function (player) {
             var data = {
                 'team': 'home',

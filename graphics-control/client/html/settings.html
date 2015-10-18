@@ -113,7 +113,7 @@
                 </div>
                 <div class="panel-body players">
                     <div class="row">
-                        <row ng-repeat="player in data.home.players">
+                        <div class="row padding-5" ng-repeat="player in data.home.players">
                             <div class="col-xs-1 player-number">
                                 {{ player.number }}
                             </div>
@@ -129,7 +129,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </row>
+                        </div>
 
                     </div>
                 </div>
@@ -209,7 +209,7 @@
                     <h3 class="panel-title">New Player</h3>
                 </div>
                 <div class="panel-body players">
-                    <row ng-repeat="player in data.guest.players">
+                    <div class="row padding-5" ng-repeat="player in data.guest.players">
                         <div class="col-xs-1 player-number">
                             {{ player.number }}
                         </div>
@@ -225,7 +225,7 @@
                                 </div>
                             </div>
                         </div>
-                    </row>
+                    </div>
                 </div>
             </div>
         </div>

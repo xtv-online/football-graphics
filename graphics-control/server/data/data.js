@@ -91,11 +91,12 @@ module.exports.removePlayer = function (team, playerId) {
     updateData();
 };
 
-module.exports.setPlaying = function (team, playerId, isPlaying) {
+module.exports.setPlaying = function (team, playerNumber, isPlaying) {
+
     if (team === 'home') {
-        data.home.players[playerId].isPlaying = isPlaying;
+        _.find(data.home.players, _.matchesProperty('number', playerNumber)).isPlaying = isPlaying
     } else {
-        data.guest.players[playerId].isPlaying = isPlaying;
+        _.find(data.guest.players, _.matchesProperty('number', playerNumber)).isPlaying = isPlaying
     }
     updateData();
 };
