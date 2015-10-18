@@ -3,6 +3,7 @@
 module.exports = {
     js : [
         'bower_components/angular/angular.min.js',
+        'bower_components/angular-bootstrap/ui-bootstrap.min.js',
         'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
     ],
     css : [
