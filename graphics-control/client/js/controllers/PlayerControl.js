@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('PlayerControlController', function ($rootScope, $scope, $uibModal, TeamSettingsSvc) {
+    .controller('PlayerControlController', function ($rootScope, $scope, $uibModal, TeamSettingsSvc, ScoreCounterSvc) {
         $scope.data = {};
         $scope.animationsEnabled = true;
 
@@ -13,6 +13,32 @@ angular.module('app')
             TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
         };
 
+        $scope.playerScored = function (team, playerNumber) {
+            // Show Graphics
+
+            // Change Score
+            switch (team) {
+                case 'home':
+                    ScoreCounterSvc.incrementHome();
+                    break;
+                case 'guest':
+                    ScoreCounterSvc.incrementGuest();
+                    break;
+            }
+        };
+
+        $scope.playerGotCard = function (team, playerNumber, card) {
+            // Show Graphics
+            // team: home, guest
+            // playerNumber: int
+            // card: yellow, red
+        };
+
+        $scope.teamPenaltyAction = function (team, type) {
+            // Show Graphics
+            // team: home, guest
+            // type: corner, penalty
+        };
 
         $scope.open = function (team, playerNumber, size) {
 
@@ -63,7 +89,9 @@ angular.module('app')
         };
 
         $scope.ok = function () {
-            console.log("Selected", playerToBeSubstituted, "to substitute with", $scope.selected.player.number);
+            // Show Graphics
+
+            // Change data
             setPlayerIsPlaying(team, $scope.selected.player.number, true);
             setPlayerIsPlaying(team, playerToBeSubstituted, false);
             $modalInstance.close();
