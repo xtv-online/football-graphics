@@ -35,7 +35,8 @@ angular.module('app')
             'name': '',
             'number': '',
             'filename': '',
-            'description': ''
+            'description': '',
+            'isPlaying': false
         };
 
         $scope.addGuestPlayer = function () {
@@ -46,7 +47,8 @@ angular.module('app')
                         'name': '',
                         'number': '',
                         'filename': '',
-                        'description': ''
+                        'description': '',
+                        'isPlaying': false
                     }
                 }
             }
