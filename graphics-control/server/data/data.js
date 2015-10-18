@@ -7,10 +7,10 @@ var data;
 var fileLocation = 'data/db.json';
 
 function loadData() {
-    jsonFile.readFile(fileLocation, function(err, fileData) {
+    jsonFile.readFile(fileLocation, function (err, fileData) {
         if (err) {
             console.error(err);
-            jsonFile.writeFile(fileLocation, data, function(err) {
+            jsonFile.writeFile(fileLocation, data, function (err) {
                 if (err) {
                     console.error(err);
                 }
@@ -23,16 +23,35 @@ function loadData() {
 }
 
 function saveData() {
-    jsonFile.writeFile(fileLocation, data, function(err) {
+    jsonFile.writeFile(fileLocation, data, function (err) {
         if (err) {
             console.error(err);
         }
     });
 }
 
+function sortData() {
+    data.home.players.sort(function(a, b) {
+        if (a.number < b.number)
+            return -1;
+        if (a.number > b.number)
+            return 1;
+        return 0;
+    });
+
+    data.guest.players.sort(function(a, b) {
+        if (a.number < b.number)
+            return -1;
+        if (a.number > b.number)
+            return 1;
+        return 0;
+    });
+}
+
 var updateListeners = [];
 
 function updateData() {
+    sortData();
     saveData();
     newDataUpdates();
 }
@@ -45,7 +64,7 @@ function newDataUpdates() {
 
 module.exports.listenForUpdates = function (callback) {
     updateListeners.push(callback);
-}
+};
 
 loadData();
 
@@ -54,32 +73,32 @@ module.exports.requestData = function () {
     return data;
 };
 
-module.exports.addPlayer = function(team, player) {
+module.exports.addPlayer = function (team, player) {
     if (team === 'home') {
         data.home.players.push(player);
     } else {
         data.guest.players.push(player);
     }
     updateData();
-}
+};
 
-module.exports.removePlayer = function(team, playerId) {
+module.exports.removePlayer = function (team, playerId) {
     if (team === 'home') {
         data.home.players.splice(playerId, 1);
     } else {
         data.guest.players.splice(playerId, 1);
     }
     updateData();
-}
+};
 
-module.exports.setPlaying = function(team, playerId, isPlaying) {
+module.exports.setPlaying = function (team, playerId, isPlaying) {
     if (team === 'home') {
         data.home.players[playerId].isPlaying = isPlaying;
     } else {
         data.guest.players[playerId].isPlaying = isPlaying;
     }
     updateData();
-}
+};
 
 module.exports.setColour = function (team, colourString) {
     if (team === 'home') {
@@ -88,7 +107,7 @@ module.exports.setColour = function (team, colourString) {
         data.guest.colour = colourString;
     }
     updateData();
-}
+};
 
 module.exports.setName = function (team, name) {
     if (team === 'home') {
@@ -97,4 +116,4 @@ module.exports.setName = function (team, name) {
         data.guest.name = name;
     }
     updateData();
-}
+};

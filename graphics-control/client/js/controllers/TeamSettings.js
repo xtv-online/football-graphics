@@ -12,8 +12,9 @@ angular.module('app')
             'name': '',
             'number': '',
             'filename': '',
-            'description': ''
-        }
+            'description': '',
+            'isPlaying': false
+        };
 
         $scope.addHomePlayer = function () {
             if ($scope.newHomePlayer.name !== '') {
@@ -23,8 +24,9 @@ angular.module('app')
                         'name': '',
                         'number': '',
                         'filename': '',
-                        'description': ''
-                    }
+                        'description': '',
+                        'isPlaying': false
+                    };
                 }
             }
         };
@@ -34,7 +36,7 @@ angular.module('app')
             'number': '',
             'filename': '',
             'description': ''
-        }
+        };
 
         $scope.addGuestPlayer = function () {
             if ($scope.newGuestPlayer.name !== '') {
