@@ -11,7 +11,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-bootstrap": "~0.13.3",
+    "angular-bootstrap": "~0.14.2",
     "bootstrap": "~3.3.5"
   }
 }
