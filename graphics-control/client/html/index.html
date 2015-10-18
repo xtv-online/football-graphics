@@ -49,36 +49,64 @@
                     <button type="button" class="btn btn-default">Penalty</button>
                 </div>
             </div>
+
+
             <div class="panel panel-default player-list">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Players</h3>
+                    <h3 class="panel-title">Active Players</h3>
                 </div>
-                <div class="players">
+                <div class="panel-body players">
                     <div class="player-control">
-                        <row>
+                        <row ng-repeat="player in data.home.players | filter : {isPlaying:true}">
                             <div class="col-xs-1 player-number">
-                                1
+                                {{ player.number }}
                             </div>
                             <div class="col-xs-3 player-name">
-                                Max Schmitt
+                                {{ player.name }}
                             </div>
                             <div class="col-xs-8 player-name">
                                 <div class="panel-body player-name">
-                                    <div class="btn-group" role="group" aria-label="BE">
+                                    <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-default">Yellow</button>
                                         <button type="button" class="btn btn-default">Red</button>
                                         <button type="button" class="btn btn-default">Goal</button>
                                         <button type="button" class="btn btn-default">Substitute</button>
+                                        <button type="button" class="btn btn-default">Remove</button>
                                     </div>
                                 </div>
                             </div>
-                        </row>
+                        </row><!--</row>-->
                     </div>
-                    <!-- /Player -->
-
                 </div>
                 <!-- /Player Control -->
             </div>
+            <div class="panel panel-default player-list">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Inactive Players</h3>
+                </div>
+                <div class="panel-body players">
+                    <div class="player-control">
+                        <row ng-repeat="player in data.home.players | filter : {isPlaying:false}">
+                            <div class="col-xs-1 player-number">
+                                {{ player.number }}
+                            </div>
+                            <div class="col-xs-3 player-name">
+                                {{ player.name }}
+                            </div>
+                            <div class="col-xs-8 player-name">
+                                <div class="panel-body player-name">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </row><!--</row>-->
+                    </div>
+                </div>
+                <!-- /Inactive Players -->
+            </div>
+
+
         </div>
         <div class="col-xs-12 col-md-6">
             <div class="h1 team">{{data.guest.name}}</div>
@@ -91,37 +119,67 @@
                     <button type="button" class="btn btn-default">Penalty</button>
                 </div>
             </div>
+
+
             <div class="panel panel-default player-list">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Players</h3>
+                    <h3 class="panel-title">Active Players</h3>
                 </div>
-                <div class="players">
-
+                <div class="panel-body players">
                     <div class="player-control">
-                        <row>
+                        <row ng-repeat="player in data.guest.players | filter : {isPlaying:true}">
                             <div class="col-xs-1 player-number">
-                                1
+                                {{ player.number }}
                             </div>
                             <div class="col-xs-3 player-name">
-                                Max Schmitt
+                                {{ player.name }}
                             </div>
                             <div class="col-xs-8 player-name">
                                 <div class="panel-body player-name">
-                                    <div class="btn-group" role="group" aria-label="BE">
+                                    <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-default">Yellow</button>
                                         <button type="button" class="btn btn-default">Red</button>
                                         <button type="button" class="btn btn-default">Goal</button>
                                         <button type="button" class="btn btn-default">Substitute</button>
+                                        <button type="button" class="btn btn-default">Remove</button>
                                     </div>
                                 </div>
                             </div>
-                        </row>
+                        </row><!--</row>-->
                     </div>
-                    <!-- /Player -->
-
                 </div>
                 <!-- /Player Control -->
             </div>
+            <div class="panel panel-default player-list">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Inactive Players</h3>
+                </div>
+                <div class="panel-body players">
+                    <div class="player-control">
+                        <row ng-repeat="player in data.guest.players | filter : {isPlaying:false}">
+                            <div class="col-xs-1 player-number">
+                                {{ player.number }}
+                            </div>
+                            <div class="col-xs-3 player-name">
+                                {{ player.name }}
+                            </div>
+                            <div class="col-xs-8 player-name">
+                                <div class="panel-body player-name">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </row><!--</row>-->
+                    </div>
+                </div>
+                <!-- /Inactive Players -->
+            </div>
+
+
+
+
+
         </div>
     </div>
     <div id="footer">
