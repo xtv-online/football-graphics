@@ -70,7 +70,7 @@
                                         <button type="button" class="btn btn-default">Yellow</button>
                                         <button type="button" class="btn btn-default">Red</button>
                                         <button type="button" class="btn btn-default">Goal</button>
-                                        <button type="button" class="btn btn-default" ng-click="open('Home')">Substitute</button>
+                                        <button type="button" class="btn btn-default" ng-click="open('home', player.number)">Substitute</button>
                                         <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('home', player.number, false)">Remove</button>
                                     </div>
                                 </div>
@@ -141,15 +141,15 @@
                                         <button type="button" class="btn btn-default">Yellow</button>
                                         <button type="button" class="btn btn-default">Red</button>
                                         <button type="button" class="btn btn-default">Goal</button>
-                                        <button type="button" class="btn btn-default" ng-click="open('Guest')">Substitute</button>
+                                        <button type="button" class="btn btn-default" ng-click="open('guest', player.number)">Substitute</button>
                                         <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('guest', player.number, false)">Remove</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div><!--</row>-->
+                            </div><!--</row>-->
+                        </div>
                     </div>
+                    <!-- /Player Control -->
                 </div>
-                <!-- /Player Control -->
             </div>
             <div class="panel panel-default player-list">
                 <div class="panel-heading">
@@ -176,11 +176,6 @@
                 </div>
                 <!-- /Inactive Players -->
             </div>
-
-
-
-
-
         </div>
     </div>
     <div id="footer">
@@ -202,7 +197,7 @@
                 <a href="#" ng-click="$event.preventDefault(); selected.player = player">{{ player.name }}</a>
             </li>
         </ul>
-        Selected: <b>{{ selected.player.name }}</b>
+        Selected: {{ selected.player.number }} <b>{{ selected.player.name }}</b>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>

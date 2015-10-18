@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('PlayerControlController', function ($scope, $uibModal, TeamSettingsSvc) {
+    .controller('PlayerControlController', function ($rootScope, $scope, $uibModal, TeamSettingsSvc) {
         $scope.data = {};
         $scope.animationsEnabled = true;
 
@@ -14,12 +14,16 @@ angular.module('app')
         };
 
 
-        $scope.open = function (team, size) {
+        $scope.open = function (team, playerNumber, size) {
+
+            $rootScope.selectedTeam = team;
+            $rootScope.playerToBeSubstituted = playerNumber;
+            console.log('selected player is', playerNumber);
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'substituteModal',
-                controller: 'Modal' + team + 'InstanceCtrl',
+                controller: 'ModalInstanceCtrl',
                 size: size,
                 resolve: {
                     items: function () {
@@ -36,13 +40,13 @@ angular.module('app')
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
-
-
-
     })
-    .controller('ModalHomeInstanceCtrl', function ($scope, $modalInstance, TeamSettingsSvc) {
+    .controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, TeamSettingsSvc) {
 
         $scope.data = {};
+        var team = $rootScope.selectedTeam;
+        console.log('team is', team);
+        var playerToBeSubstituted = $rootScope.playerToBeSubstituted;
 
         $scope.selected = {
             player: ""
@@ -50,46 +54,26 @@ angular.module('app')
 
         TeamSettingsSvc.updateData();
         TeamSettingsSvc.getUpdates(function (data) {
-            $scope.data = data.home.players;
+            $scope.data = data[team].players;
             $scope.$digest();
         });
 
-        $scope.setPlayerIsPlaying = function (team, playerNumber, isPlaying) {
+        function setPlayerIsPlaying (team, playerNumber, isPlaying) {
             TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
         };
 
         $scope.ok = function () {
-            console.log("Selected", "to substitute with")
+            console.log("Selected", playerToBeSubstituted, "to substitute with", $scope.selected.player.number);
+            setPlayerIsPlaying(team, $scope.selected.player.number, true);
+            setPlayerIsPlaying(team, playerToBeSubstituted, false);
             $modalInstance.close();
+            delete $rootScope.selectedTeam
+            delete $rootScope.playerToBeSubstituted
         };
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
+            delete $rootScope.selectedTeam
+            delete $rootScope.playerToBeSubstituted
         };
-}).controller('ModalGuestInstanceCtrl', function ($scope, $modalInstance, TeamSettingsSvc) {
-
-        $scope.data = {};
-
-        $scope.selected = {
-            player: ""
-        };
-
-        TeamSettingsSvc.updateData();
-        TeamSettingsSvc.getUpdates(function (data) {
-            $scope.data = data.guest.players;
-            $scope.$digest();
-        });
-
-        $scope.setPlayerIsPlaying = function (team, playerNumber, isPlaying) {
-            TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
-        };
-
-        $scope.ok = function () {
-            console.log("Selected", "to substitute with", "on team")
-            $modalInstance.close();
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-    });
+});
