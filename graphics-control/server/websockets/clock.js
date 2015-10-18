@@ -34,8 +34,6 @@ module.exports = function (socket) {
         socket.broadcast(namespace, 'clockTimeString', timeString(mainClockTime));
         socket.broadcast(namespace, 'extraTimeString', timeString(extraTimeClockTime));
         socket.broadcast(namespace, 'extraTime', extraTime);
-
-        console.log(timeString(mainClockTime), timeString(extraTimeClockTime), extraTime);
     }
 
     socket.listen(namespace, 'requestData', function () {
@@ -65,6 +63,7 @@ module.exports = function (socket) {
 
         extraTimeClockTime = 0;
         extraTime = 0;
+        sendDataUpdate();
     });
 
     socket.listen(namespace, 'resetClock', function () {
@@ -73,11 +72,13 @@ module.exports = function (socket) {
 
         extraTimeClockTime = 0;
         extraTime = 0;
+        sendDataUpdate();
     });
 
     socket.listen(namespace, 'stopClock', function () {
         mainClockIsTicking = false;
         extraTimeClockIsTicking = false;
+        sendDataUpdate();
     });
 
     socket.listen(namespace, 'setClockTime', function (minutes) {
@@ -92,6 +93,7 @@ module.exports = function (socket) {
 
     socket.listen(namespace, 'removeExtraTime', function () {
         extraTime = 0;
+        extraTimeClockIsTicking = false;
         sendDataUpdate();
     });
 

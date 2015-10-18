@@ -14,8 +14,22 @@ angular.module('app')
             });
         };
 
-        this.startClock = function () {
-            WebSocketSvc.sendMessage(namespace, 'startClock', null);
+        this.getClockTimeString = function (callback) {
+            WebSocketSvc.listen(namespace, 'clockTimeString', function (data) {
+                callback(data);
+            });
+        };
+
+        this.getExtraTimeClockString = function (callback) {
+            WebSocketSvc.listen(namespace, 'extraTimeString', function (data) {
+                callback(data);
+            });
+        };
+
+        this.getExtraTime = function (callback) {
+            WebSocketSvc.listen(namespace, 'extraTime', function (data) {
+                callback(data);
+            });
         };
 
         this.startClock = function () {

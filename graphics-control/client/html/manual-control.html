@@ -2,93 +2,140 @@
 <html class="no-js" lang="">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Football Varsity Graphics Control</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Football Varsity Graphics Control</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="css/vendor.css">
-  <link rel="stylesheet" href="css/client.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/client.css">
 </head>
 
 <body ng-app="app">
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">[X][T][V] Football</a>
-      </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
-          <li class="active"><a href="/manual-control">Manual Controls</a></li>
-          <li><a href="/settings">Settings</a></li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
-    </div>
-  </nav>
-
-  <div class="container">
-    <div class="padding-15">
-
-      <div class="col-xs-12 col-md-3 padding-15">
-        <div class="input-group">
-          <input type="number" class="form-control" placeholder="0">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Set time and stop!</button>
-            <button class="btn btn-default" type="button">GO!</button>
-          </span>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">XTV Football</a>
         </div>
-        <!-- /input-group -->
-      </div>
-      <!-- /.col-lg-6 -->
-
-      <div class="col-xs-12 col-md-4 padding-15">
-        <div class="input-group">
-          <input type="number" class="form-control" placeholder="0">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Add extra time!</button>
-            <button class="btn btn-default" type="button">Remove!</button>
-          </span>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/manual-control">Manual Controls</a></li>
+                <li><a href="/settings">Settings</a></li>
+            </ul>
         </div>
-        <!-- /input-group -->
-      </div>
-      <!-- /.col-lg-6 -->
+        <!--/.nav-collapse -->
+    </div>
+</nav>
 
-      <div class="col-xs-12 col-md-7 padding-15">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Some LT text">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Show LT for 5sec</button>
-            <button class="btn btn-default" type="button">Show LT for 10sec</button>
-          </span>
+
+<div class="container" style="padding-top: 16px;">
+    <div class="row">
+        <div class="panel panel-default" ng-controller="ClockController">
+            <div class="panel-heading">Clock Control</div>
+            <div class="panel-body">
+                <div class="row" style="margin: 8px;">
+                    <div class="col-xs-12">
+                        <button type="button" class="btn btn-success" ng-click="showClock()">Show Clock</button>
+                        <button type="button" class="btn btn-danger" ng-click="hideClock()">Hide Clock</button>
+                        <span>&nbsp - &nbsp</span>
+                        <button type="button" class="btn btn-success" ng-click="startClock()">Start Clock</button>
+                        <button type="button" class="btn btn-warning" ng-click="resetClock()">Reset Clock</button>
+                        <button type="button" class="btn btn-danger" ng-click="stopClock()">Stop Clock</button>
+                        <span>&nbsp - &nbsp</span>
+                        <span style="font-weight: bold;">CLK: {{clockTimeString}} - EXT: {{extraTimeClockString}} (+{{extraTime}})</span>
+                    </div>
+                </div>
+                <div class="row" style="margin: 8px;">
+                    <div class="col-xs-12">
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="0" ng-model="newMinute">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="setMinute()">Set Minute</button>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="0" ng-model="newExtraTime">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="addExtraTime()">Add Extra Time</button>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <button class="btn btn-danger" type="button" ng-click="removeExtraTime()">Remove Extra Time</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /input-group -->
-      </div>
-      <!-- /.col-lg-6 -->
-
-      <div class="btn-group padding-15" role="group">
-        <button type="button" class="btn btn-default">Exeter + 1</button>
-        <button type="button" class="btn btn-default">Exeter - 1</button>
-        <button type="button" class="btn btn-default">Bath + 1</button>
-        <button type="button" class="btn btn-default">Bath - 1</button>
-      </div>
-
     </div>
-    <div id="footer">
-      Footer
-    </div>
-  </div>
-  <!-- /.container -->
-  <script src="js/vendor.js" charset="utf-8"></script>
-  <script src="js/application.js" charset="utf-8"></script>
+</div>
+
+<!--<div class="container">-->
+<!--<div class="padding-15">-->
+
+<!--<div class="col-xs-12 col-md-3 padding-15">-->
+<!--<div class="input-group">-->
+<!--<input type="number" class="form-control" placeholder="0">-->
+<!--<span class="input-group-btn">-->
+<!--<button class="btn btn-default" type="button">Set time and stop!</button>-->
+<!--<button class="btn btn-default" type="button">GO!</button>-->
+<!--</span>-->
+<!--</div>-->
+<!--&lt;!&ndash; /input-group &ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash; /.col-lg-6 &ndash;&gt;-->
+
+<!--<div class="col-xs-12 col-md-4 padding-15">-->
+<!--<div class="input-group">-->
+<!--<input type="number" class="form-control" placeholder="0">-->
+<!--<span class="input-group-btn">-->
+<!--<button class="btn btn-default" type="button">Add extra time!</button>-->
+<!--<button class="btn btn-default" type="button">Remove!</button>-->
+<!--</span>-->
+<!--</div>-->
+<!--&lt;!&ndash; /input-group &ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash; /.col-lg-6 &ndash;&gt;-->
+
+<!--<div class="col-xs-12 col-md-7 padding-15">-->
+<!--<div class="input-group">-->
+<!--<input type="text" class="form-control" placeholder="Some LT text">-->
+<!--<span class="input-group-btn">-->
+<!--<button class="btn btn-default" type="button">Show LT for 5sec</button>-->
+<!--<button class="btn btn-default" type="button">Show LT for 10sec</button>-->
+<!--</span>-->
+<!--</div>-->
+<!--&lt;!&ndash; /input-group &ndash;&gt;-->
+<!--</div>-->
+<!--&lt;!&ndash; /.col-lg-6 &ndash;&gt;-->
+
+<!--<div class="btn-group padding-15" role="group">-->
+<!--<button type="button" class="btn btn-default">Exeter + 1</button>-->
+<!--<button type="button" class="btn btn-default">Exeter - 1</button>-->
+<!--<button type="button" class="btn btn-default">Bath + 1</button>-->
+<!--<button type="button" class="btn btn-default">Bath - 1</button>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div id="footer">-->
+<!--Footer-->
+<!--</div>-->
+<!--</div>-->
+<!-- /.container -->
+<script src="js/vendor.js" charset="utf-8"></script>
+<script src="js/application.js" charset="utf-8"></script>
 </body>
 
 </html>
