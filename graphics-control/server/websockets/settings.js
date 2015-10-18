@@ -27,4 +27,8 @@ module.exports = function(socket) {
     socket.listen(namespace, 'changeTeamColour', function (data) {
         dataInterface.setColour(data.team, data.colour);
     });
+
+    socket.listen(namespace, 'changeShortName', function (data) {
+        dataInterface.setShortName(data.team, data.shortName);
+    });
 };

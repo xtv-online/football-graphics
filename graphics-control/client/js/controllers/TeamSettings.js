@@ -77,4 +77,12 @@ angular.module('app')
             TeamSettingsSvc.changeGuestTeamColour($scope.data.guest.colour);
         };
 
+        $scope.changeHomeTeamShortName = function () {
+            TeamSettingsSvc.changeHomeTeamShortName($scope.data.home.shortName);
+        };
+
+        $scope.changeGuestTeamShortName = function () {
+            TeamSettingsSvc.changeGuestTeamShortName($scope.data.guest.shortName);
+        };
+
     });

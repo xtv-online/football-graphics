@@ -54,6 +54,14 @@
                         </span>
                 </div>
                 <div class="input-group padding-15">
+                    <input type="text" class="form-control" placeholder="EXE" ng-model="data.home.shortName"
+                           ng-change="changeHomeTeamShortName()">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="changeHomeTeamShortName()">Set Short Name
+                            </button>
+                        </span>
+                </div>
+                <div class="input-group padding-15">
                     <input type="text" ng-model="data.home.colour" class="form-control" placeholder="#0f5d3b"
                            ng-change="changeHomeColour()">
                     <span class="input-group-addon" style="background-color:{{data.home.colour}};">&nbsp</span>
@@ -142,6 +150,14 @@
                         </span>
                 </div>
                 <div class="input-group padding-15">
+                    <input type="text" class="form-control" placeholder="EXE" ng-model="data.guest.shortName"
+                           ng-change="changeGuestTeamShortName()">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="changeGuestTeamShortName()">Set Short Name
+                            </button>
+                        </span>
+                </div>
+                <div class="input-group padding-15">
                     <input type="text" ng-model="data.guest.colour" class="form-control" placeholder="#0f5d3b"
                            ng-change="changeGuestColour()">
                     <span class="input-group-addon" style="background-color:{{data.guest.colour}};">&nbsp</span>
@@ -202,7 +218,7 @@
                         </div>
                         <div class="col-xs-8 player-name">
                             <div class="panel-body player-name">
-                                <div class="btn-group" role="group" aria-label="BE">
+                                <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-default" ng-click="removeGuestPlayer($index)">
                                         Delete
                                     </button>

@@ -117,3 +117,12 @@ module.exports.setName = function (team, name) {
     }
     updateData();
 };
+
+module.exports.setShortName = function (team, shortName) {
+    if (team === 'home') {
+        data.home.shortName = shortName;
+    } else {
+        data.guest.shortName = shortName;
+    }
+    updateData();
+};
