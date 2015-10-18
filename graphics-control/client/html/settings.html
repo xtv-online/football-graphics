@@ -97,7 +97,7 @@
                     </div>
                     <div class="panel-body players">
                         <div class="row">
-                            <row ng-repeat="player in data.home.players | orderBy: 'number'">
+                            <row ng-repeat="player in data.home.players">
                                 <div class="col-xs-1 player-number">
                                     {{ player.number }} </div>
                                 <div class="col-xs-3 player-name">
@@ -174,7 +174,7 @@
                         <h3 class="panel-title">New Player</h3>
                     </div>
                     <div class="panel-body players">
-                        <row ng-repeat="player in data.guest.players | orderBy: 'number'">
+                        <row ng-repeat="player in data.guest.players">
                             <div class="col-xs-1 player-number">
                                 {{ player.number }} </div>
                             <div class="col-xs-3 player-name">
