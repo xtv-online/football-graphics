@@ -1,11 +1,9 @@
 // On Load
 
-$('#full').hide();
-$('#nameOnly').hide();
+$('#redCard').hide();
 
 var name = '';
 var description = '';
-var isNameOnly = false;
 
 // Caspar Functions
 
@@ -13,38 +11,23 @@ function setSocketAddress(address, port) {
     connect(address, port);
 };
 
-function play() {
-    if (isNameOnly) {
-        $('#nameOnly').show();
-        $('#nameOnly').animo({
-            animation: 'bounceInLeft',
-            duration: 0.3
-        });
-    } else {
-        $('#full').show();
-        $('#full').animo({
-            animation: 'bounceInLeft',
-            duration: 0.3
-        });
-    }
+
+function showLt(){
+    $('#redCard').show();
+    $('#redCard').animo({
+        animation: 'fadeInUp',
+        duration: 0.3
+    });
+    window.setTimeout(hideLt, 5000);
 }
 
-function stop() {
-    if (isNameOnly) {
-        $('#nameOnly').animo({
-            animation: 'bounceOutLeft',
-            duration: 0.3
-        }, function() {
-            $('#nameOnly').hide();
-        });
-    } else {
-        $('#full').animo({
-            animation: 'bounceOutLeft',
-            duration: 0.3
-        }, function() {
-            $('#full').hide();
-        });
-    }
+function hideLt() {
+    $('#redCard').animo({
+        animation: 'fadeOutDown',
+        duration: 0.5
+    }, function() {
+        $('#redCard').hide();
+    });
 }
 
 // Utility Functions
@@ -79,7 +62,7 @@ var namespace = 'lowerThirds';
 
 listenForInstruction(namespace, 'ltPlay', function (data) {
     updateData(data);
-    play();
+    showLt();
 });
 
 listenForInstruction(namespace, 'ltHide', function () {
