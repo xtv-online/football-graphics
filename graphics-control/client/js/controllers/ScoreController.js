@@ -20,20 +20,20 @@ angular.module('app')
                 case 'home':
                     switch (direction){
                         case 'up':
-                            ScoreControlSvc.incrementHome()
+                            ScoreCounterSvc.incrementHome()
                             break;
                         case 'down':
-                            ScoreControlSvc.decrementHome()
+                            ScoreCounterSvc.decrementHome()
                             break;
                     }
                     break;
                 case 'guest':
                     switch (direction){
                         case 'up':
-                            ScoreControlSvc.incrementGuest()
+                            ScoreCounterSvc.incrementGuest()
                             break;
                         case 'down':
-                            ScoreControlSvc.decrementGuest()
+                            ScoreCounterSvc.decrementGuest()
                             break;
                     }
                     break;
