@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'clear_sans';
+    src: url('../fonts/ClearSans-Bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'clear_sans';
+    src: url('../fonts/ClearSans-BoldItalic-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'clear_sans';
+    src: url('../fonts/ClearSans-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'glyphicons';
+    src: url('../fonts/glyphicons-halflings-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    color: white;
+    font-size: 1em;
+    font-family: Gill Sans MT, Gill Sans, Calibri, sans-serif;
+    line-height: 1.4;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    text-align: center;
+    font-family: clear_sans;
+}
+
+.lowerThird {
+    position: absolute;
+    width: 60%;
+    height: 135px;
+    bottom: 25px;
+    left: 20%;
+    background-color: #351b26;
+    color: white;
+    text-align: center;
+    font-size: 70px;
+}
+
+.ltOneTeamColor {
+    border-left-color: #784a5b;
+    border-left-width: 50px;
+    border-left-style: solid;
+    border-right-color: green;
+    border-right-width: 100px;
+    border-right-style: solid;
+}
+
+.ltBothTeamColor {
+    border-left-color: green;
+    border-left-width: 100px;
+    border-left-style: solid;
+    border-right-color: blue;
+    border-right-width: 100px;
+    border-right-style: solid;
+}
+
+.actionTypeText {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 6px;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.actionMainText{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 35px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.actionCornerText{
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    top: -25px;
+    font-size: 35px;
+    left: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+    transform: rotate(-3deg);
+}
+
+.homeTeam{
+    position: absolute;
+    text-align: right;
+    width: 100%;
+    right: 52%;
+    text-transform: uppercase;
+    font-weight: bold;
+    top: 15px;
+}
+
+.awayTeam{
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    left: 52%;
+    text-transform: uppercase;
+    font-weight: bold;
+    top: 15px;
+}
+
+.divider {
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.subIn{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.subOut{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 80px;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 40px;
+}
+
+.actionTeamRight {
+    position: absolute;
+    bottom: 0px;
+    text-align: right;
+    right: 20px;
+    font-size: 45px;
+    font-variant: small-caps;
+}
+
+.actionTeamLeft{
+    position: absolute;
+    bottom: 0px;
+    text-align: left;
+    left: 20px;
+    font-size: 45px;
+    font-variant: small-caps;
+}
+
+.actionGraphic{
+    position: relative;
+    text-align: left;
+    margin-left: 20px;
+    margin-top: -20px;
+}
+
+.card {
+    height: 105px;
+    width: 68px;
+    transform: rotate(30deg);
+}
+
+.yellow {
+    background-color: #fff44d;
+}
+
+.red {
+    background-color: #ff293a;
+}
+
+.arrowIn {
+    font-family: 'glyphicons';
+    color: white;
+    content: "\e093";
+}
+
+.arrowOut {
+    font-family: 'glyphicons';
+    content: "\e094";
+}
