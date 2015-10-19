@@ -26,6 +26,11 @@
     font-style: normal;
 }
 
+@keyframes wiggleCards {
+    0%   {transform: rotate(20deg);}
+    100%   {transform: rotate(35deg);}
+}
+
 html {
     color: white;
     font-size: 1em;
@@ -175,9 +180,14 @@ body {
 }
 
 .card {
-    height: 105px;
-    width: 68px;
+    height: 150px;
+    width: 90px;
     transform: rotate(30deg);
+    box-shadow: 14px 15px 19px -4px rgba(0,0,0,1);
+    animation-name: wiggleCards;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 .yellow {
