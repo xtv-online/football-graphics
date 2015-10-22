@@ -138,7 +138,7 @@ body {
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 5px;
+    top: 2px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 60px;
@@ -151,7 +151,7 @@ body {
     top: 80px;
     text-transform: uppercase;
     font-weight: normal;
-    font-size: 40px;
+    font-size: 38px;
 }
 
 .actionTeamRight {

@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('PlayerControlController', function ($rootScope, $scope, $uibModal, TeamSettingsSvc, ScoreCounterSvc) {
+    .controller('PlayerControlController', function ($rootScope, $scope, $uibModal, TeamSettingsSvc, ScoreCounterSvc, GraphicsSvc, lodash) {
         $scope.data = {};
         $scope.animationsEnabled = true;
 
@@ -9,12 +9,22 @@ angular.module('app')
             $scope.$digest();
         });
 
+        ScoreCounterSvc.updateData();
+        ScoreCounterSvc.getUpdates(function (data) {
+            $scope.scoreData = data;
+            $scope.$digest();
+        });
+
         $scope.setPlayerIsPlaying = function (team, playerNumber, isPlaying) {
             TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
         };
 
         $scope.playerScored = function (team, playerNumber) {
             // Show Graphics
+            var teamData = data[team];
+            delete teamData.players;
+
+            var playerData = data[team].players
 
             // Change Score
             switch (team) {
@@ -67,7 +77,7 @@ angular.module('app')
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
     })
-    .controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, TeamSettingsSvc) {
+    .controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, TeamSettingsSvc, GraphicsSvc) {
 
         $scope.data = {};
         var team = $rootScope.selectedTeam;
@@ -86,7 +96,7 @@ angular.module('app')
 
         function setPlayerIsPlaying (team, playerNumber, isPlaying) {
             TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
-        };
+        }
 
         $scope.ok = function () {
             // Show Graphics

@@ -39,7 +39,7 @@
 <div class="container">
     <div class="control-template" ng-controller="PlayerControlController">
         <div class="col-xs-12 col-md-6 border-right">
-            <div class="h1 team">{{data.home.name}}</div>
+            <div class="h1 team">{{data.home.name}} - {{scoreData.home.score}}</div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Team Control</h3>
@@ -110,7 +110,7 @@
 
         </div>
         <div class="col-xs-12 col-md-6">
-            <div class="h1 team">{{data.guest.name}}</div>
+            <div class="h1 team">{{data.guest.name}}  - {{scoreData.guest.score}}</div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Team Control</h3>

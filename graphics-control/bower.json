@@ -12,6 +12,7 @@
   ],
   "dependencies": {
     "angular-bootstrap": "~0.14.2",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "ng-lodash": "~0.3.0"
   }
 }

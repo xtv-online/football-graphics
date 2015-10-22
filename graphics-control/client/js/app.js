@@ -1,1 +1,1 @@
-angular.module('app', ['ui.bootstrap']);
+angular.module('app', ['ui.bootstrap', 'ngLodash']);
