@@ -14,175 +14,206 @@
 
 <body ng-app="app">
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">XTV Football</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/manual-control">Manual Controls</a></li>
-                <li><a href="/settings">Settings</a></li>
-            </ul>
-        </div>
-        <!--/.nav-collapse -->
-
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">XTV Football</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/manual-control">Manual Controls</a></li>
+            <li><a href="/settings">Settings</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div class="container">
-    <div class="control-template" ng-controller="PlayerControlController">
-        <div class="col-xs-12 col-md-6 border-right">
-            <div class="h1 team">{{data.home.name}} - {{scoreData.home.score}}</div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Team Control</h3>
-                </div>
-                <div class="btn-group padding-15" role="group">
-                    <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('home', 'corner')">Corner</button>
-                    <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('home', 'penalty')">Penalty</button>
-                </div>
+<!--<div class="container">-->
+<div class="control-template" ng-controller="PlayerControlController">
+    <div class="col-xs-12 col-md-6 border-right">
+        <div class="h1 team">{{data.home.name}} - {{scoreData.home.score}}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Team Control</h3>
             </div>
-
-
-            <div class="panel panel-default player-list">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Active Players</h3>
-                </div>
-                <div class="panel-body players">
-                    <div class="player-control">
-                        <div class="row padding-5" ng-repeat="player in data.home.players | filter : {isPlaying:true}">
-                            <div class="col-xs-1 player-number">
-                                {{ player.number }}
-                            </div>
-                            <div class="col-xs-3 player-name">
-                                {{ player.name }}
-                            </div>
-                            <div class="col-xs-8 player-name">
-                                <div class="panel-body player-name">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default" ng-click="playerGotCard('home', player.number, 'yellow')">Yellow</button>
-                                        <button type="button" class="btn btn-default" ng-click="playerGotCard('home', player.number, 'red')">Red</button>
-                                        <button type="button" class="btn btn-default" ng-click="playerScored('home', player.number)">Goal</button>
-                                        <button type="button" class="btn btn-default" ng-click="open('home', player.number)">Substitute</button>
-                                        <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('home', player.number, false)">Remove</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--</row>-->
-                    </div>
-                </div>
-
-                <!-- /Player Control -->
+            <div class="btn-group padding-15" role="group">
+                <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('home', 'corner')">Corner
+                </button>
+                <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('home', 'penalty')">Penalty
+                </button>
             </div>
-            <div class="panel panel-default player-list">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Inactive Players</h3>
-                </div>
-                <div class="panel-body players">
-                    <div class="padding-15 player-control">
-                        <div class="row padding-5" ng-repeat="player in data.home.players | filter : {isPlaying:false}">
-                            <div class="col-xs-1 player-number">
-                                {{ player.number }}
-                            </div>
-                            <div class="col-xs-3 player-name">
-                                {{ player.name }}
-                            </div>
-                            <div class="col-xs-8 player-name">
-                                <div class="panel-body player-name">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('home', player.number, true)">Add</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--</row>-->
-                    </div>
-                </div>
-                <!-- /Inactive Players -->
-            </div>
-
-
         </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="h1 team">{{data.guest.name}}  - {{scoreData.guest.score}}</div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Team Control</h3>
-                </div>
-                <div class="btn-group padding-15" role="group">
-                    <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('guest', 'corner')">Corner</button>
-                    <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('guest', 'penalty')">Penalty</button>
-                </div>
+
+
+        <div class="panel panel-default player-list">
+            <div class="panel-heading">
+                <h3 class="panel-title">Active Players</h3>
             </div>
-
-
-            <div class="panel panel-default player-list">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Active Players</h3>
-                </div>
-                <div class="panel-body players">
-                    <div class="player-control">
-                        <div class="row padding-5" ng-repeat="player in data.guest.players | filter : {isPlaying:true}">
-                            <div class="col-xs-1 player-number">
-                                {{ player.number }}
-                            </div>
-                            <div class="col-xs-3 player-name">
-                                {{ player.name }}
-                            </div>
-                            <div class="col-xs-8 player-name">
-                                <div class="panel-body player-name">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default" ng-click="playerGotCard('guest', player.number, 'yellow')">Yellow</button>
-                                        <button type="button" class="btn btn-default" ng-click="playerGotCard('guest', player.number, 'red')">Red</button>
-                                        <button type="button" class="btn btn-default" ng-click="playerScored('guest', player.number)">Goal</button>
-                                        <button type="button" class="btn btn-default" ng-click="open('guest', player.number)">Substitute</button>
-                                        <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('guest', player.number, false)">Remove</button>
-                                    </div>
+            <div class="panel-body players">
+                <div class="player-control">
+                    <div class="row padding-5" ng-repeat="player in data.home.players | filter : {isPlaying:true}" style="border-bottom: solid 1px #EEE; border-top: solid 1px #EEE; margin-top: 2px;">
+                        <div class="col-xs-1 player-number">
+                            {{ player.number }}
+                        </div>
+                        <div class="col-xs-4 player-name">
+                            {{ player.name }} {{player.description ? ' - '+ player.description : ''}}
+                        </div>
+                        <div class="col-xs-7 player-name text-right">
+                            <div class="panel-body player-name">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default"
+                                            ng-click="showGenericLT('home', player.number)">LT
+                                    </button>
+                                    <button type="button" class="btn btn-primary"
+                                            ng-click="open('home', player.number)">Substitute
+                                    </button>
+                                    <button type="button" class="btn btn-warning"
+                                            ng-click="playerGotCard('home', player.number, 'yellow')">Yellow
+                                    </button>
+                                    <button type="button" class="btn btn-danger"
+                                            ng-click="playerGotCard('home', player.number, 'red')">Red
+                                    </button>
+                                    <button type="button" class="btn btn-success"
+                                            ng-click="playerScored('home', player.number)">Goal
+                                    </button>
+                                    <button type="button" class="btn btn-default"
+                                            ng-click="setPlayerIsPlaying('home', player.number, false)">X
+                                    </button>
                                 </div>
-                            </div><!--</row>-->
+                            </div>
                         </div>
                     </div>
-                    <!-- /Player Control -->
+                    <!--</row>-->
                 </div>
             </div>
-            <div class="panel panel-default player-list">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Inactive Players</h3>
-                </div>
-                <div class="panel-body players">
-                    <div class="padding-15 player-control">
-                        <div class="row padding-5"ng-repeat="player in data.guest.players | filter : {isPlaying:false}">
-                            <div class="col-xs-1 player-number">
-                                {{ player.number }}
-                            </div>
-                            <div class="col-xs-3 player-name">
-                                {{ player.name }}
-                            </div>
-                            <div class="col-xs-8 player-name">
-                                <div class="panel-body player-name">
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-default" ng-click="setPlayerIsPlaying('guest', player.number, true)">Add</button>
-                                    </div>
+
+            <!-- /Player Control -->
+        </div>
+        <div class="panel panel-default player-list">
+            <div class="panel-heading">
+                <h3 class="panel-title">Inactive Players</h3>
+            </div>
+            <div class="panel-body players">
+                <div class="player-control">
+                    <div class="row padding-5" ng-repeat="player in data.home.players | filter : {isPlaying:false}">
+                        <div class="col-xs-1 player-number">
+                            {{ player.number }}
+                        </div>
+                        <div class="col-xs-5 player-name">
+                            {{ player.name }}
+                        </div>
+                        <div class="col-xs-6 player-name">
+                            <div class="panel-body player-name">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default"
+                                            ng-click="setPlayerIsPlaying('home', player.number, true)">Add
+                                    </button>
                                 </div>
                             </div>
-                        </div><!--</row>-->
+                        </div>
                     </div>
+                    <!--</row>-->
                 </div>
-                <!-- /Inactive Players -->
+            </div>
+            <!-- /Inactive Players -->
+        </div>
+
+
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <div class="h1 team">{{data.guest.name}} - {{scoreData.guest.score}}</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Team Control</h3>
+            </div>
+            <div class="btn-group padding-15" role="group">
+                <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('guest', 'corner')">Corner
+                </button>
+                <button type="button" class="btn btn-default" ng-click="teamPenaltyAction('guest', 'penalty')">Penalty
+                </button>
             </div>
         </div>
-    </div>
-    <div id="footer">
-        Footer
+
+
+        <div class="panel panel-default player-list">
+            <div class="panel-heading">
+                <h3 class="panel-title">Active Players</h3>
+            </div>
+            <div class="panel-body players">
+                <div class="player-control">
+                    <div class="row padding-5" ng-repeat="player in data.guest.players | filter : {isPlaying:true}" style="border-bottom: solid 1px #EEE; border-top: solid 1px #EEE; margin-top: 2px;">
+                        <div class="col-xs-1 player-number">
+                            {{ player.number }}
+                        </div>
+                        <div class="col-xs-4 player-name">
+                            {{ player.name }} {{player.description ? ' - '+ player.description : ''}}
+                        </div>
+                        <div class="col-xs-7 player-name text-right">
+                            <div class="panel-body player-name">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default"
+                                            ng-click="showGenericLT('guest', player.number)">LT
+                                    </button>
+                                    <button type="button" class="btn btn-primary"
+                                            ng-click="open('guest', player.number)">Substitute
+                                    </button>
+                                    <button type="button" class="btn btn-warning"
+                                            ng-click="playerGotCard('guest', player.number, 'yellow')">Yellow
+                                    </button>
+                                    <button type="button" class="btn btn-danger"
+                                            ng-click="playerGotCard('guest', player.number, 'red')">Red
+                                    </button>
+                                    <button type="button" class="btn btn-success"
+                                            ng-click="playerScored('guest', player.number)">Goal
+                                    </button>
+                                    <button type="button" class="btn btn-default"
+                                            ng-click="setPlayerIsPlaying('guest', player.number, false)">X
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--</row>-->
+                    </div>
+                </div>
+                <!-- /Player Control -->
+            </div>
+        </div>
+        <div class="panel panel-default player-list">
+            <div class="panel-heading">
+                <h3 class="panel-title">Inactive Players</h3>
+            </div>
+            <div class="panel-body players">
+                <div class="player-control">
+                    <div class="row padding-5" ng-repeat="player in data.guest.players | filter : {isPlaying:false}">
+                        <div class="col-xs-1 player-number">
+                            {{ player.number }}
+                        </div>
+                        <div class="col-xs-5 player-name">
+                            {{ player.name }}
+                        </div>
+                        <div class="col-xs-6 player-name">
+                            <div class="panel-body player-name">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default"
+                                            ng-click="setPlayerIsPlaying('guest', player.number, true)">Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</row>-->
+                </div>
+            </div>
+            <!-- /Inactive Players -->
+        </div>
     </div>
 </div>
-</div>
+<!--</div>-->
 <!-- /.container -->
 <script src="js/vendor.js" charset="utf-8"></script>
 <script src="js/application.js" charset="utf-8"></script>

@@ -38,4 +38,15 @@ module.exports = function (socket) {
         console.log('Generic LT', data.teamData, data.name, data.description);
     });
 
+    socket.listen(namespace, 'showScoreLt', function () {
+        console.log('Show Score');
+    });
+
+    socket.listen(namespace, 'hideScoreLt', function () {
+        console.log('Hide Score');
+    });
+
+    socket.listen(namespace, 'clearLt', function () {
+        console.log('Clear All LTs');
+    });
 };

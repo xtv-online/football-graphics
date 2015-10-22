@@ -21,10 +21,10 @@ angular.module('app')
 
         $scope.playerScored = function (team, playerNumber) {
             // Show Graphics
-            var teamData = data[team];
-            delete teamData.players;
+            var teamData = $scope.data[team];
+            var playerData = lodash.find($scope.data[team].players, lodash.matchesProperty('number', playerNumber));
 
-            var playerData = data[team].players
+            GraphicsSvc.score(teamData, playerData);
 
             // Change Score
             switch (team) {
@@ -38,16 +38,37 @@ angular.module('app')
         };
 
         $scope.playerGotCard = function (team, playerNumber, card) {
-            // Show Graphics
-            // team: home, guest
-            // playerNumber: int
-            // card: yellow, red
+            var teamData = $scope.data[team];
+            var playerData = lodash.find($scope.data[team].players, lodash.matchesProperty('number', playerNumber));
+
+            switch (card) {
+                case 'yellow':
+                    GraphicsSvc.yellowCard(teamData, playerData);
+                    break;
+                case 'red':
+                    GraphicsSvc.redCard(teamData, playerData);
+                    break;
+            }
         };
 
         $scope.teamPenaltyAction = function (team, type) {
-            // Show Graphics
-            // team: home, guest
-            // type: corner, penalty
+            var teamData = $scope.data[team];
+
+            switch (type) {
+                case 'corner':
+                    GraphicsSvc.corner(teamData);
+                    break;
+                case 'penalty':
+                    GraphicsSvc.penalty(teamData);
+                    break;
+            }
+        };
+
+        $scope.showGenericLT = function (team, playerNumber) {
+            var teamData = $scope.data[team];
+            var playerData = lodash.find($scope.data[team].players, lodash.matchesProperty('number', playerNumber));
+
+            GraphicsSvc.genericLt(playerData.name, playerData.description, teamData);
         };
 
         $scope.open = function (team, playerNumber, size) {
@@ -77,7 +98,7 @@ angular.module('app')
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
     })
-    .controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, TeamSettingsSvc, GraphicsSvc) {
+    .controller('ModalInstanceCtrl', function ($scope, $rootScope, $modalInstance, TeamSettingsSvc, GraphicsSvc, lodash) {
 
         $scope.data = {};
         var team = $rootScope.selectedTeam;
@@ -91,6 +112,7 @@ angular.module('app')
         TeamSettingsSvc.updateData();
         TeamSettingsSvc.getUpdates(function (data) {
             $scope.data = data[team].players;
+            $scope.allData = data;
             $scope.$digest();
         });
 
@@ -100,6 +122,10 @@ angular.module('app')
 
         $scope.ok = function () {
             // Show Graphics
+            var teamData = $scope.allData[team];
+            var offData = lodash.find($scope.allData[team].players, lodash.matchesProperty('number', playerToBeSubstituted));
+
+            GraphicsSvc.substitution(teamData, $scope.selected.player, offData);
 
             // Change data
             setPlayerIsPlaying(team, $scope.selected.player.number, true);

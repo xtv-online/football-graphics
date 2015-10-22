@@ -38,7 +38,7 @@ angular.module('app')
         };
 
         this.substitution = function (teamData, on, off) {
-            WebSocketSvc.sendMessage(namespace, 'penalty', {
+            WebSocketSvc.sendMessage(namespace, 'substitution', {
                 'teamData': teamData,
                 'on': on,
                 'off': off
@@ -46,11 +46,23 @@ angular.module('app')
         };
 
         this.genericLt = function (name, description, teamData) {
-            WebSocketSvc.sendMessage(namespace, 'penalty', {
+            WebSocketSvc.sendMessage(namespace, 'genericLt', {
                 'teamData': teamData,
                 'name': name,
                 'description': description
             });
+        };
+
+        this.showScoreLt = function () {
+            WebSocketSvc.sendMessage(namespace, 'showScoreLt', null);
+        };
+
+        this.hideScoreLt = function () {
+            WebSocketSvc.sendMessage(namespace, 'hideScoreLt', null);
+        };
+
+        this.clearLt = function () {
+            WebSocketSvc.sendMessage(namespace, 'clearLt', null);
         };
 
     });
