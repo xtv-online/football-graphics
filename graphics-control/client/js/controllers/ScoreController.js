@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('ScoreController', function($scope, ScoreCounterSvc, TeamSettingsSvc) {
+    .controller('ScoreController', function($scope, ScoreCounterSvc, TeamSettingsSvc, GraphicsSvc) {
         $scope.data = {};
         $scope.teamData = {};
 
@@ -40,5 +40,8 @@ angular.module('app')
             }
 
         };
+
+        $scope.showScoreLt = GraphicsSvc.showScoreLt;
+        $scope.hideScoreLt = GraphicsSvc.hideScoreLt;
 
     });

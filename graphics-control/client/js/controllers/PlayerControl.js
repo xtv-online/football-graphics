@@ -15,6 +15,8 @@ angular.module('app')
             $scope.$digest();
         });
 
+        $scope.clear = GraphicsSvc.clearLt;
+
         $scope.setPlayerIsPlaying = function (team, playerNumber, isPlaying) {
             TeamSettingsSvc.setPlayerIsPlaying(team, playerNumber, isPlaying);
         };
