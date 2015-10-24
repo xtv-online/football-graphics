@@ -59,22 +59,20 @@ body {
     font-size: 70px;
 }
 
-.ltOneTeamColor {
-    border-left-color: #784a5b;
-    border-left-width: 50px;
-    border-left-style: solid;
-    border-right-color: green;
-    border-right-width: 100px;
-    border-right-style: solid;
+.ltNoTeamColour {
+    border-right: 50px solid #784a5b;
+    border-left: 50px solid #784a5b;
 }
 
-.ltBothTeamColor {
-    border-left-color: green;
-    border-left-width: 100px;
-    border-left-style: solid;
-    border-right-color: blue;
-    border-right-width: 100px;
-    border-right-style: solid;
+
+.ltOneTeamColour {
+    border-right: 100px solid green;
+    border-left: 50px solid #784a5b;
+}
+
+.ltBothTeamColour {
+    border-right: 100px solid blue;
+    border-left: 100px solid green;
 }
 
 .actionTypeText {
@@ -134,9 +132,17 @@ body {
     width: 100%;
 }
 
-.subIn{
-    position: absolute;
+.left {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.center {
     text-align: center;
+}
+
+.text1 {
+    position: absolute;
     width: 100%;
     top: 2px;
     text-transform: uppercase;
@@ -144,9 +150,8 @@ body {
     font-size: 60px;
 }
 
-.subOut{
+.text2 {
     position: absolute;
-    text-align: center;
     width: 100%;
     top: 80px;
     text-transform: uppercase;
@@ -196,15 +201,4 @@ body {
 
 .red {
     background-color: #ff293a;
-}
-
-.arrowIn {
-    font-family: 'glyphicons';
-    color: white;
-    content: "\e093";
-}
-
-.arrowOut {
-    font-family: 'glyphicons';
-    content: "\e094";
 }

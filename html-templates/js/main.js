@@ -2,8 +2,10 @@
 
 $('#redCard').hide();
 
-var name = '';
-var description = '';
+var text1 = "";
+var text2 = "";
+var colour1 = "#784a5b";
+var colour2 = "#784a5b";
 
 // Caspar Functions
 
@@ -13,58 +15,70 @@ function setSocketAddress(address, port) {
 
 
 function showLt(){
-    $('#redCard').show();
-    $('#redCard').animo({
-        animation: 'fadeInUp',
+    $(".lowerThird").show();
+    $(".lowerThird").animo({
+        animation: "fadeInUp",
         duration: 0.3
     });
     window.setTimeout(hideLt, 5000);
+
 }
 
 function hideLt() {
-    $('#redCard').animo({
-        animation: 'fadeOutDown',
+    $(".lowerThird").animo({
+        animation: "fadeOutDown",
         duration: 0.5
     }, function() {
-        $('#redCard').hide();
+        $(".lowerThird").hide();
     });
 }
 
 // Utility Functions
 
 function updateFields() {
-    $('.text.name').text(name);
-    $('.text.description').text(description);
+    $("#text1").html(text1);
+    $('#text2').html(text2);
+
+    $(".ltOneTeamColour").css("border-right-color", colour1);
+
+    $(".ltBothTeamColour").css("border-left-color", colour1);
+    $(".ltBothTeamColour").css("border-right-color", colour2);
 }
 
 // Update Data
 
 function updateData(data) {
-    name = data.name;
+    text1 = data.text1;
 
-    if (data.description) {
-        description = data.description;
+    if (data.text2) {
+        text2 = data.text2;
     } else {
-        description = '';
+        text2 = '';
     }
 
-    if (description === '') {
-        nameOnly = true;
-    } else {
-        nameOnly = false;
+    if (data.colour1) {
+        colour1 = data.colour1;
+    }
+
+    if (data.colour2) {
+        colour2 = data.colour2;
     }
 
     updateFields();
 }
 
 // WebSocket Handlers
-var namespace = 'lowerThirds';
+var namespace = "lowerThirds";
 
-listenForInstruction(namespace, 'ltPlay', function (data) {
+listenForInstruction(namespace, "ltPlay", function (data) {
     updateData(data);
     showLt();
 });
 
-listenForInstruction(namespace, 'ltHide', function () {
+listenForInstruction(namespace, "ltHide", function () {
     stop();
 });
+
+
+// Hide LT on start up
+hideLt();
