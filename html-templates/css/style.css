@@ -208,7 +208,7 @@ body {
     position: absolute;
     top: 70px;
     left: 180px;
-    width: 500px;
+    width: 520px;
     height: 70px;
     color: white;
     font-family: clear_sans, monospace;
@@ -235,7 +235,7 @@ body {
 #gameScore{
     position:absolute;
     height: 100%;
-    width: 140px;
+    width: 160px;
     top: 0px;
     padding: 5px;
     text-align: center;
@@ -276,7 +276,7 @@ body {
     position:absolute;
     top: 140px;
     left: 250px;
-    width: 360px;
+    width: 380px;
     height: 50px;
     color: white;
     font-family: clear_sans, monospace;
@@ -289,7 +289,7 @@ body {
     background: #593747;
     position: absolute;
     left: 0px;
-    width: 160px;
+    width: 170px;
 }
 
 /*time the match goes on after 90'/45'*/
@@ -297,7 +297,7 @@ body {
     background: #784a5b;
     position: absolute;
     left: 160px;
-    width: 130px;
+    width: 135px;
 
 }
 
@@ -306,5 +306,5 @@ body {
     background-color: #1f020f;
     position: absolute;
     left: 290px;
-    width: 70px;
+    width: 75px;
 }

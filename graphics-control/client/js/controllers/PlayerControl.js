@@ -73,6 +73,13 @@ angular.module('app')
             GraphicsSvc.genericLt(playerData.name, playerData.description, teamData);
         };
 
+        $scope.showGenericLtPlayer = function (team, playerNumber) {
+            var teamData = $scope.data[team];
+            var playerData = lodash.find($scope.data[team].players, lodash.matchesProperty('number', playerNumber));
+
+            GraphicsSvc.genericLtPlayer(playerData.name, playerData.description, teamData);
+        };
+
         $scope.open = function (team, playerNumber, size) {
 
             $rootScope.selectedTeam = team;

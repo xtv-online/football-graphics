@@ -51,8 +51,8 @@ module.exports = function (socket) {
     socket.listen(namespace, "substitution", function (data) {
         console.log("Substitution", data.teamData, data.on, data.off);
         var msgData = {
-            "text1":data.on.name,
-            "text2":data.off.name,
+            "text1":data.on.number + ": " + data.on.name,
+            "text2":data.off.number + ": " + data.off.name,
             "colour1": data.teamData.colour
         };
         socket.broadcast(namespace, "substitution", msgData);
@@ -68,8 +68,8 @@ module.exports = function (socket) {
         socket.broadcast(namespace, "generic", msgData);
     });
 
-    // Generic LT for Players with colours
-    socket.listen(namespace, "genericLt", function (data) {
+    //// Generic LT for Players with colours
+    socket.listen(namespace, "genericLtPlayer", function (data) {
         console.log("Generic LT", data.teamData, data.name, data.description);
         var msgData = {
             "text1":data.name,

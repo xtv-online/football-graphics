@@ -53,6 +53,15 @@ angular.module('app')
             });
         };
 
+        this.genericLtPlayer = function (name, description, teamData) {
+            WebSocketSvc.sendMessage(namespace, 'genericLtPlayer', {
+                'teamData': teamData,
+                'name': name,
+                'description': description
+            });
+        };
+
+
         this.showScoreLt = function () {
             WebSocketSvc.sendMessage(namespace, 'showScoreLt', null);
         };
