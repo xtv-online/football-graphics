@@ -1,1 +1,1 @@
-{"home":{"name":"Exeter","players":[],"colour":""},"guest":{"name":"Bath","players":[],"colour":"green"}}
+{"home":{"name":"Exeter","players":[{"name":"Thomas","number":1,"filename":"","description":"","isPlaying":false},{"name":"Nik Rahmel","number":5,"filename":"","description":"BEST","isPlaying":true}],"colour":"GREEN","shortName":"EXE"},"guest":{"name":"Bath","players":[{"name":"Someone","number":2,"filename":"","description":"","isPlaying":true},{"name":"Catarpillar","number":88,"filename":"","description":"","isPlaying":false}],"colour":"Blue","shortName":"BTH"}}
