@@ -88,9 +88,10 @@ body {
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 35px;
+    top: 45px;
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 55px;
 }
 
 .actionCornerText{
