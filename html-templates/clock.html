@@ -18,7 +18,8 @@
     <link rel="stylesheet" href="css/animate-animo.min.css">
 </head>
 
-<body ng-app="app">
+
+<sc ng-app="app">
 
 <!--Clock-->
 <div id="logo"></div>
@@ -36,10 +37,18 @@
     <div id="guestColour"></div>
 </div>
 <div id="clock">
-
+    <div id="matchTime">
+        45:00
+    </div>
+    <div id="overTime">
+        +3:49
+    </div>
+    <div id="stoppageTime">
+        4'
+    </div>
 </div>
 <script>
-    var ltType
+    var ltType;
 </script>
 <script src="js/webSocket_nonAngular.js" type="text/javascript"></script>
 <script src="js/main.js" type="text/javascript"></script>
