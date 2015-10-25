@@ -16,6 +16,7 @@ function showLt(){
     timeout = window.setTimeout(hideLt, 5000);
 }
 
+
 function hideLt() {
     $(".lowerThird").animo({
         animation: "fadeOutDown",
@@ -68,6 +69,7 @@ listenForInstruction(namespace, ltType, function (data) {
 });
 
 listenForInstruction("scoreCounter", "scoreData", function (data){
+
     console.log("Score Data:", data);
 });
 
@@ -78,3 +80,4 @@ listenForInstruction(namespace, "hideLt", function () {
 
 // Hide LT on start up
 hideLt();
+

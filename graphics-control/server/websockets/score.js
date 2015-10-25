@@ -1,26 +1,26 @@
-'use strict';
+"use strict";
 
-var dataInterface = require('../data/data');
-var namespace = 'scoreCounter';
+var dataInterface = require("../data/data");
+var namespace = "scoreCounter";
 
 var data = {
-    'home': {
-        'name': '',
-        'shortName': '',
-        'colour':'',
-        'score': 0
+    "home": {
+        "name": "",
+        'shortName': "",
+        "colour":"",
+        "score": 0
     },
-    'guest': {
-        'name': '',
-        'shortName': '',
-        'colour':'',
-        'score': 0
+    "guest": {
+        "name": "",
+        "shortName": "",
+        "colour":"",
+        "score": 0
     }
 };
 
 module.exports = function (socket) {
     function sendDataUpdate() {
-        socket.broadcast(namespace, 'scoreData', data);
+        socket.broadcast(namespace, "scoreData", data);
     }
 
     dataInterface.listenForUpdates(function (newData) {
@@ -33,31 +33,32 @@ module.exports = function (socket) {
         sendDataUpdate();
     });
 
-    socket.listen(namespace, 'requestData', function () {
+    socket.listen(namespace, "requestData", function () {
         dataInterface.requestData();
+        sendDataUpdate();
     });
 
-    socket.listen(namespace, 'incrementHome', function () {
+    socket.listen(namespace, "incrementHome", function () {
         data.home.score++;
         sendDataUpdate();
     });
 
-    socket.listen(namespace, 'decrementHome', function () {
+    socket.listen(namespace, "decrementHome", function () {
         data.home.score--;
         sendDataUpdate();
     });
 
-    socket.listen(namespace, 'incrementGuest', function () {
+    socket.listen(namespace, "incrementGuest", function () {
         data.guest.score++;
         sendDataUpdate();
     });
 
-    socket.listen(namespace, 'decrementGuest', function () {
+    socket.listen(namespace, "decrementGuest", function () {
         data.guest.score--;
         sendDataUpdate();
     });
 
-    socket.listen(namespace, 'resetScore', function () {
+    socket.listen(namespace, "resetScore", function () {
         data.home.score = 0;
         data.guest.score = 0;
         sendDataUpdate();

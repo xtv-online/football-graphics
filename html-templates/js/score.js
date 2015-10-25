@@ -15,6 +15,14 @@ var scoreData = {
     }
 };
 
+function updateScore(){
+    $("#homeName").text(scoreData.home.shortName);
+    $("#guestName").text(scoreData.guest.shortName);
+    $("#gameScore").text(scoreData.home.score + " | " + scoreData.guest.score);
+    $("#homeColour").css("background-color", scoreData.home.colour);
+    $("#guestColour").css("background-color", scoreData.guest.colour);
+}
+
 function showLt(){
     clearTimeout(timeout);
     $(".lowerThird").show();
@@ -43,9 +51,11 @@ function setLtData(){
 
 // WebSocket Handlers
 var graphicsNamespace = "graphics";
+var scoreNamespace = "scoreCounter";
 
-listenForInstruction("scoreCounter", "scoreData", function (data) {
+listenForInstruction(scoreNamespace, "scoreData", function (data) {
     scoreData = data;
+    updateScore();
 });
 
 listenForInstruction(graphicsNamespace, "score", function () {
@@ -73,3 +83,6 @@ listenForInstruction(graphicsNamespace, "hideLt", function () {
 
 // Hide LT on start up
 hideLt();
+
+// Request Score Data
+sendMessage(scoreNamespace, "requestData");
