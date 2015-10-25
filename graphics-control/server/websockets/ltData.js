@@ -5,6 +5,6 @@ var namespace = "ltData";
 
 module.exports = function(socket) {
     socket.listen(namespace, "requestData", function () {
-        socket.broadcast(namespace, "score", ltData);
+        socket.broadcast(namespace, "newData", ltData);
     });
 };
