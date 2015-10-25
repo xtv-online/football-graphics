@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var namespace = 'graphics';
+var namespace = "graphics";
 var timeout;
 
 module.exports = function (socket) {
@@ -10,7 +10,7 @@ module.exports = function (socket) {
     });
 
     // Red Card - Player Data + Team Data
-    socket.listen(namespace, 'redCard', function (data) {
+    socket.listen(namespace, "redCard", function (data) {
         var msgData = {
             "text1":data.playerData.number + " " + data.playerData.name,
             "colour1": data.teamData.colour
@@ -49,10 +49,9 @@ module.exports = function (socket) {
 
     // Substitution - Player Data 1, Player Data 2, Team Data
     socket.listen(namespace, "substitution", function (data) {
-        console.log("Substitution", data.teamData, data.on, data.off);
         var msgData = {
-            "text1":data.on.number + ": " + data.on.name,
-            "text2":data.off.number + ": " + data.off.name,
+            "text1":data.on.number + " " + data.on.name,
+            "text2":data.off.number + " " + data.off.name,
             "colour1": data.teamData.colour
         };
         socket.broadcast(namespace, "substitution", msgData);
@@ -60,7 +59,6 @@ module.exports = function (socket) {
 
     // Generic LT Data - Name, Description
     socket.listen(namespace, "genericLt", function (data) {
-        console.log("Generic LT", data.teamData, data.name, data.description);
         var msgData = {
             "text1":data.name,
             "text2":data.description
@@ -70,7 +68,6 @@ module.exports = function (socket) {
 
     //// Generic LT for Players with colours
     socket.listen(namespace, "genericLtPlayer", function (data) {
-        console.log("Generic LT", data.teamData, data.name, data.description);
         var msgData = {
             "text1":data.name,
             "text2":data.description,
