@@ -19,6 +19,8 @@ http://localhost:3000
 Set Name, Colour, Short name and players.
 Settings are applied immediately to the template.
 
+The 'Picture URI' is currently not being used by any of the templates. Future development could see it integrated into the lower thirds, or additional templates for a teamsheet with photos or similar.
+
 ### Player Control
 ![Screenshot](/screenshots/main_control.png?raw=true)
 
