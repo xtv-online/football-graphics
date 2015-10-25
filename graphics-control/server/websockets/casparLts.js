@@ -1,15 +1,12 @@
 'use strict';
 
 var namespace = 'graphics';
+var timeout;
 
 module.exports = function (socket) {
     // Player Scores - Player Data + Team Data
     socket.listen(namespace, "score", function (data) {
-        console.log("Player Scored", data.teamData, data.playerData);
-
-        //Exeter &nbsp;&nbsp;1&nbs
-        //&nbsp;2&nbsp;&nbsp; Bath
-
+        socket.broadcast(namespace, "score");
     });
 
     // Red Card - Player Data + Team Data
@@ -83,13 +80,11 @@ module.exports = function (socket) {
     });
 
     socket.listen(namespace, "showScoreLt", function () {
-        console.log("Show Score");
-        //Exeter &nbsp;&nbsp;1&nbs
-        //&nbsp;2&nbsp;&nbsp; Bath
+        socket.broadcast(namespace, "scoreShow");
     });
 
     socket.listen(namespace, "hideScoreLt", function () {
-        console.log("Hide Score");
+        socket.broadcast(namespace, "hideLt");
     });
 
     socket.listen(namespace, "clearLt", function () {

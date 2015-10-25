@@ -1,7 +1,5 @@
 // On Load
 
-$('#redCard').hide();
-
 var text1 = "";
 var text2 = "";
 var colour1 = "#784a5b";
@@ -68,6 +66,11 @@ listenForInstruction(namespace, ltType, function (data) {
     updateData(data);
     showLt();
 });
+
+listenForInstruction("scoreCounter", "scoreData", function (data){
+    console.log("Score Data:", data);
+});
+
 
 listenForInstruction(namespace, "hideLt", function () {
     hideLt();
