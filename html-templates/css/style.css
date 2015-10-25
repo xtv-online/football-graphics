@@ -202,3 +202,72 @@ body {
 .red {
     background-color: #ff293a;
 }
+
+#score {
+    background-color: #1f020f;
+    position: absolute;
+    top: 70px;
+    left: 180px;
+    width: 500px;
+    height: 70px;
+    color: white;
+    font-family: clear_sans, monospace;
+    font-size: 35pt;
+}
+
+#homeColour{
+    position:relative;
+    height: 100%;
+    width: 70px;
+    left: 0px;
+    background-color: green;
+}
+
+#homeName{
+    position:absolute;
+    height: 100%;
+    width: 100px;
+    left: 80px;
+    top: 0px;
+    padding: 5px;
+}
+
+#gameScore{
+    position:absolute;
+    height: 100%;
+    width: 140px;
+    top: 0px;
+    padding: 5px;
+    text-align: center;
+    left: 180px;
+    right: 180px;
+}
+
+#guestName{
+    position:absolute;
+    height: 100%;
+    width: 100px;
+    right: 80px;
+    top: 0px;
+    padding: 5px;
+
+}
+
+#guestColour{
+    position:absolute;
+    height: 100%;
+    width: 70px;
+    right: 0px;
+    top: 0px;
+    background-color: blue;
+}
+
+#logo {
+    background: #784a5b url("../xtv.svg") no-repeat 15px 5px;
+    background-size: 60px 60px;
+    position: absolute;
+    top: 70px;
+    left: 80px;
+    width: 100px;
+    height: 70px;
+}

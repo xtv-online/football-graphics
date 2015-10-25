@@ -20,61 +20,28 @@
 
 <body ng-app="app">
 
-<!-- Score -->
-<!--<div class="lowerThird ltBothTeamColor">-->
-    <!--<div class="centreText">-->
-        <!--<div class="homeTeam">-->
-            <!--<span>Exeter &nbsp;&nbsp;1&nbsp;</span>-->
-        <!--</div>-->
-        <!--<div class="divider">|</div>-->
-        <!--<div class="awayTeam">-->
-            <!--<span>&nbsp;2&nbsp;&nbsp; Bath</span>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
- <!--Substitution -->
-<!--<div class="lowerThird ltOneTeamColor">-->
-    <!--<div class="subIn">-->
-        <!--<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>-->
-        <!--<span>1: Niklas Rahmel</span>-->
-    <!--</div>-->
-    <!--<div class="subOut">-->
-        <!--<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>-->
-        <!--<span>2: Sam Hutchings</span>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<!--Yellow Card-->
-<div class="lowerThird ltOneTeamColour">
-    <div class="actionGraphic">
-        <div class="card yellow"> </div>
+<!--Clock-->
+<div id="logo"></div>
+<div id="score">
+    <div id="homeColour"></div>
+    <div id="homeName">
+        EXE
     </div>
-    <div class="actionTypeText">
-        Yellow Card
+    <div id="gameScore">
+        0 | 0
     </div>
-    <div class="actionMainText">
-        <span>1: Niklas Rahmel</span>
+    <div id="guestName">
+        BTH
     </div>
+    <div id="guestColour"></div>
 </div>
+<div id="clock">
 
-
-<!--Red Card-->
-<!--<div id="redCard" class="lowerThird ltOneTeamColor">-->
-    <!--<div class="actionGraphic">-->
-        <!--<div class="card red"> </div>-->
-    <!--</div>-->
-    <!--<div class="actionTypeText">-->
-         <!--Red Card-->
-    <!--</div>-->
-    <!--<div class="actionMainText">-->
-        <!--<span>1: Niklas Rahmel</span>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<script src="js/main.js" type="text/javascript"></script>
+</div>
+<script>
+    var ltType
+</script>
 <script src="js/webSocket_nonAngular.js" type="text/javascript"></script>
+<script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
