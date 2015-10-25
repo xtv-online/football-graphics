@@ -20,7 +20,7 @@ var data = {
 
 module.exports = function (socket) {
     function sendDataUpdate() {
-        socket.broadcast(namespace, 'newData', data);
+        socket.broadcast(namespace, 'scoreData', data);
     }
 
     dataInterface.listenForUpdates(function (newData) {

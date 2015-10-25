@@ -6,22 +6,16 @@ var text1 = "";
 var text2 = "";
 var colour1 = "#784a5b";
 var colour2 = "#784a5b";
-
-// Caspar Functions
-
-function setSocketAddress(address, port) {
-    connect(address, port);
-};
-
+var timeout;
 
 function showLt(){
+    clearTimeout(timeout);
     $(".lowerThird").show();
     $(".lowerThird").animo({
         animation: "fadeInUp",
         duration: 0.3
     });
-    window.setTimeout(hideLt, 5000);
-
+    timeout = window.setTimeout(hideLt, 5000);
 }
 
 function hideLt() {
@@ -68,17 +62,16 @@ function updateData(data) {
 }
 
 // WebSocket Handlers
-var namespace = "lowerThirds";
+var namespace = "graphics";
 
-listenForInstruction(namespace, "ltPlay", function (data) {
+listenForInstruction(namespace, ltType, function (data) {
     updateData(data);
     showLt();
 });
 
-listenForInstruction(namespace, "ltHide", function () {
-    stop();
+listenForInstruction(namespace, "hideLt", function () {
+    hideLt();
 });
-
 
 // Hide LT on start up
 hideLt();
