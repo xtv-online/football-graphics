@@ -9,7 +9,7 @@ angular.module('app')
         };
 
         this.getUpdates = function (callback) {
-            WebSocketSvc.listen(namespace, 'newData', function (data) {
+            WebSocketSvc.listen(namespace, 'scoreData', function (data) {
                 callback(data);
             });
         };
