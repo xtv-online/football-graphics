@@ -20,7 +20,7 @@
     "applest-atem": "^0.1.2",
     "body-parser": "^1.13.3",
     "bower": "^1.5.2",
-    "caspar-cg": "git+git@github.com:xtv-online/custom-caspar-cg-node.git",
+    "caspar-cg": "git@github.com:xtv-online/node-caspar-cg.git",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
