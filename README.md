@@ -1,14 +1,25 @@
-# football-varsity-2015
+# XTV Football Graphics
 
-## Install
+## Prerequisites
+ - Node.js (tested with version 4)
+ - CasparCG Server (tested with 2.0.7)
+ - CasparCG Client to load the templates (tested with 2.0.7)
+ - Tested with a Blackmagic Decklink HD Extreme 3D+  for SDI Key & Fill Out
+
+## Install Control
+- Inside the graphics-control folder:
 - `npm install`
 - `bower install`
 
-## Run
+## Run Control
 - `gulp`
 
-# Open
-http://localhost:3000
+## Set Up Caspar Templates
+- Copy the `html-templates` folder into your CasparCG Server templates directory
+- Load all the templates in Caspar using the CasparCG client on separate video layers on the correct channel and 'play' them.
+
+# Use Control
+http://localhost:3000 (or the IP of the machine you have the controls running on)
 
 # Operation
 
